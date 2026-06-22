@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DevDotDev — Chennai Web & App Developer | Professional Web & App Development</title>
+<meta name="description" content="DevDotDev is a Chennai-based software development company building custom web apps, mobile apps, HRMS, CRM, ERP, e-commerce and business websites. Modern, scalable, reliable." />
+<meta name="keywords" content="web development Chennai, app development, HRMS, CRM, ERP, ecommerce, React, Laravel, DevDotDev, Chennai Web App Developer" />
+
+<!-- Open Graph / social share -->
+<meta property="og:title" content="DevDotDev — Chennai Web & App Developer" />
+<meta property="og:description" content="Professional Web & App Development Services. Web apps, mobile apps, HRMS, CRM, ERP, e-commerce & more." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="logo.png" />
+
+<link rel="icon" type="image/png" href="logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --bg:#0a0a0c;
+  --bg-2:#101015;
+  --bg-3:#16161d;
+  --card:#15151c;
+  --line:rgba(255,255,255,.08);
+  --orange:#F47B20;
+  --orange-2:#ff9a4d;
+  --orange-soft:rgba(244,123,32,.12);
+  --white:#ffffff;
+  --muted:#9a9aa8;
+  --muted-2:#6c6c7a;
+  --radius:16px;
+  --maxw:1180px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+.mono{font-family:'JetBrains Mono',monospace}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+section{padding:90px 0;position:relative}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* ===== reusable ===== */
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  color:var(--orange);
+  font-size:.82rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:14px;
+  display:inline-block;
+}
+.eyebrow::before{content:'<';opacity:.6;margin-right:4px}
+.eyebrow::after{content:'/>';opacity:.6;margin-left:4px}
+h2.title{
+  font-size:clamp(1.8rem,4vw,2.7rem);
+  font-weight:800;
+  line-height:1.15;
+  margin-bottom:14px;
+  letter-spacing:-.5px;
+}
+.title .accent{color:var(--orange)}
+.sec-sub{color:var(--muted);max-width:620px;margin-bottom:46px;font-weight:300}
+.center{text-align:center}
+.center .sec-sub{margin-left:auto;margin-right:auto}
+
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:14px 26px;border-radius:50px;font-weight:600;font-size:.95rem;
+  cursor:pointer;border:none;transition:.25s;white-space:nowrap;
+}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{background:var(--orange-2);transform:translateY(-2px);box-shadow:0 10px 30px rgba(244,123,32,.35)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--orange);color:var(--orange)}
+
+/* ===== nav ===== */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,10,12,.72);backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;transition:.3s;
+}
+header.scrolled{border-bottom:1px solid var(--line);background:rgba(10,10,12,.92)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700}
+.brand img{width:42px;height:42px;border-radius:50%}
+.brand .bt{font-size:1.05rem;line-height:1}
+.brand .bt small{display:block;font-size:.62rem;color:var(--muted);font-weight:400;letter-spacing:1px}
+.nav-links{display:flex;gap:34px;align-items:center}
+.nav-links a{font-size:.93rem;color:var(--muted);font-weight:500;transition:.2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{padding:10px 20px;font-size:.88rem}
+.burger{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer}
+
+/* ===== hero ===== */
+.hero{
+  padding:170px 0 110px;text-align:center;position:relative;overflow:hidden;
+  background:
+    radial-gradient(900px 500px at 50% -10%,rgba(244,123,32,.16),transparent 60%),
+    var(--bg);
+}
+.hero::after{
+  content:'';position:absolute;inset:0;z-index:0;opacity:.4;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:54px 54px;
+  mask-image:radial-gradient(700px 400px at 50% 30%,#000,transparent 75%);
+}
+.hero .wrap{position:relative;z-index:1}
+.hero-logo{
+  width:120px;height:120px;border-radius:50%;margin:0 auto 26px;
+  box-shadow:0 0 0 1px rgba(244,123,32,.4),0 18px 50px rgba(0,0,0,.6);
+  animation:float 5s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero h1{
+  font-size:clamp(2.2rem,6vw,4rem);font-weight:800;letter-spacing:-1px;
+  line-height:1.08;margin-bottom:20px;
+}
+.hero h1 .accent{color:var(--orange)}
+.hero p{color:var(--muted);max-width:640px;margin:0 auto 36px;font-size:1.08rem;font-weight:300}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero-stats{display:flex;gap:46px;justify-content:center;margin-top:60px;flex-wrap:wrap}
+.hero-stats .st b{font-size:1.9rem;font-weight:800;color:#fff;display:block}
+.hero-stats .st span{color:var(--muted-2);font-size:.86rem}
+
+/* ===== services ===== */
+.grid{display:grid;gap:20px}
+.svc-grid{grid-template-columns:repeat(3,1fr)}
+.svc{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 26px;transition:.28s;position:relative;overflow:hidden;
+}
+.svc::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:.3s}
+.svc:hover{transform:translateY(-6px);border-color:rgba(244,123,32,.35);background:var(--bg-3)}
+.svc:hover::before{transform:scaleX(1)}
+.svc .ic{
+  width:50px;height:50px;border-radius:12px;background:var(--orange-soft);
+  display:grid;place-items:center;font-size:1.4rem;margin-bottom:18px;
+}
+.svc h3{font-size:1.15rem;margin-bottom:8px;font-weight:600}
+.svc p{color:var(--muted);font-size:.92rem;font-weight:300}
+
+/* ===== portfolio ===== */
+.port-grid{grid-template-columns:repeat(3,1fr)}
+.proj{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;transition:.28s;display:flex;flex-direction:column;
+}
+.proj:hover{transform:translateY(-6px);border-color:rgba(244,123,32,.35)}
+.proj .thumb{
+  height:170px;display:grid;place-items:center;position:relative;
+  font-family:'JetBrains Mono',monospace;font-weight:700;font-size:2.4rem;color:#fff;
+}
+.proj .thumb span{position:relative;z-index:1;text-shadow:0 4px 18px rgba(0,0,0,.45)}
+.proj .thumb::after{content:'';position:absolute;inset:0;opacity:.22;
+  background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:26px 26px}
+.t-hrms{background:linear-gradient(135deg,#7b2ff7,#f107a3)}
+.t-crm{background:linear-gradient(135deg,#0093E9,#80D0C7)}
+.t-erp{background:linear-gradient(135deg,#F47B20,#ff5858)}
+.t-ecom{background:linear-gradient(135deg,#11998e,#38ef7d)}
+.t-biz{background:linear-gradient(135deg,#FC466B,#3F5EFB)}
+.t-app{background:linear-gradient(135deg,#FFB75E,#ED8F03)}
+.proj .body{padding:22px 22px 24px;flex:1;display:flex;flex-direction:column}
+.proj .tag{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--orange);letter-spacing:1px;margin-bottom:8px}
+.proj h3{font-size:1.12rem;margin-bottom:8px;font-weight:600}
+.proj p{color:var(--muted);font-size:.9rem;font-weight:300;flex:1}
+.proj .stack{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.proj .stack span{font-size:.72rem;background:var(--bg-3);border:1px solid var(--line);padding:4px 10px;border-radius:30px;color:var(--muted)}
+
+/* ===== about / why ===== */
+.about{background:var(--bg-2);border-block:1px solid var(--line)}
+.about-flex{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.why-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+.why-item{display:flex;align-items:flex-start;gap:12px;font-size:.94rem;font-weight:400}
+.why-item .ck{flex:none;width:24px;height:24px;border-radius:7px;background:var(--orange-soft);color:var(--orange);display:grid;place-items:center;font-size:.85rem;margin-top:2px}
+.about-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:34px;
+  position:relative;overflow:hidden;
+}
+.about-card::before{content:'</>';position:absolute;top:-20px;right:6px;font-family:'JetBrains Mono',monospace;font-size:7rem;color:rgba(244,123,32,.06);font-weight:700}
+.about-card h3{font-size:1.3rem;margin-bottom:10px}
+.about-card p{color:var(--muted);font-weight:300;font-size:.96rem;margin-bottom:18px}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px}
+.about-tags span{font-size:.78rem;background:var(--orange-soft);color:var(--orange-2);padding:5px 12px;border-radius:30px;font-family:'JetBrains Mono',monospace}
+
+/* ===== pricing ===== */
+.price-cats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:34px}
+.cat-btn{
+  padding:9px 20px;border-radius:40px;border:1px solid var(--line);background:transparent;
+  color:var(--muted);font-family:'Poppins';font-size:.86rem;cursor:pointer;transition:.22s;font-weight:500;
+}
+.cat-btn.active,.cat-btn:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
+.price-grid{grid-template-columns:repeat(3,1fr)}
+.price{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;
+  transition:.25s;display:flex;flex-direction:column;gap:6px;
+}
+.price:hover{border-color:rgba(244,123,32,.4);background:var(--bg-3)}
+.price .pc{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted-2);letter-spacing:1px;text-transform:uppercase}
+.price h4{font-size:1.05rem;font-weight:600}
+.price .amt{font-size:1.4rem;font-weight:800;color:var(--orange);margin-top:auto;padding-top:10px}
+.price .amt small{font-size:.7rem;color:var(--muted);font-weight:400}
+.price-note{text-align:center;color:var(--muted-2);font-size:.85rem;margin-top:26px}
+
+/* ===== contact ===== */
+.contact{background:var(--bg-2);border-top:1px solid var(--line)}
+.contact-flex{display:grid;grid-template-columns:1fr 1fr;gap:46px}
+.contact-info .ci{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+.contact-info .ci .ic{width:46px;height:46px;border-radius:12px;background:var(--orange-soft);color:var(--orange);display:grid;place-items:center;font-size:1.2rem;flex:none}
+.contact-info .ci b{display:block;font-size:.96rem}
+.contact-info .ci span{color:var(--muted);font-size:.88rem}
+.form{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
+.form label{display:block;font-size:.82rem;color:var(--muted);margin-bottom:6px;margin-top:14px}
+.form label:first-child{margin-top:0}
+.form input,.form textarea{
+  width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;
+  padding:12px 14px;color:#fff;font-family:'Poppins';font-size:.92rem;transition:.2s;
+}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--orange)}
+.form textarea{resize:vertical;min-height:100px}
+.form .btn{width:100%;justify-content:center;margin-top:20px}
+.whatsapp-float{
+  position:fixed;bottom:24px;right:24px;z-index:90;
+  width:58px;height:58px;border-radius:50%;background:#25D366;
+  display:grid;place-items:center;color:#fff;font-size:1.7rem;
+  box-shadow:0 8px 24px rgba(37,211,102,.5);transition:.25s;
+}
+.whatsapp-float:hover{transform:scale(1.08)}
+
+/* ===== footer ===== */
+footer{background:var(--bg);border-top:1px solid var(--line);padding:50px 0 30px}
+.foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:30px}
+.foot-brand{max-width:320px}
+.foot-brand .brand{margin-bottom:14px}
+.foot-brand p{color:var(--muted);font-size:.9rem;font-weight:300}
+.foot-cols{display:flex;gap:60px;flex-wrap:wrap}
+.foot-col h5{font-size:.82rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted-2);margin-bottom:14px;font-family:'JetBrains Mono'}
+.foot-col a{display:block;color:var(--muted);font-size:.9rem;margin-bottom:9px;transition:.2s}
+.foot-col a:hover{color:var(--orange)}
+.foot-bottom{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--muted-2);font-size:.84rem}
+
+/* ===== reveal anim ===== */
+.reveal{opacity:0;transform:translateY(26px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ===== responsive ===== */
+@media(max-width:920px){
+  .svc-grid,.port-grid,.price-grid{grid-template-columns:1fr 1fr}
+  .about-flex,.contact-flex{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  section{padding:64px 0}
+  .nav-links{
+    position:fixed;top:74px;right:0;width:74%;height:calc(100vh - 74px);
+    background:var(--bg-2);flex-direction:column;align-items:flex-start;gap:0;
+    padding:24px;transform:translateX(110%);transition:.3s;border-left:1px solid var(--line);
+  }
+  .nav-links.open{transform:none}
+  .nav-links a{padding:14px 0;width:100%;border-bottom:1px solid var(--line);font-size:1rem}
+  .nav-links .nav-cta{margin-top:14px;width:100%;justify-content:center}
+  .burger{display:block}
+  .svc-grid,.port-grid,.price-grid,.why-list{grid-template-columns:1fr}
+  .hero-stats{gap:30px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#home" class="brand">
+      <img src="logo.png" alt="DevDotDev logo" />
+      <div class="bt">DevDotDev<small>CHENNAI WEB &amp; APP DEVELOPER</small></div>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#about">About</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn btn-primary nav-cta">Get a Quote</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="menu">&#9776;</button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <img src="logo.png" alt="DevDotDev" class="hero-logo" />
+    <span class="eyebrow">Professional Web &amp; App Development</span>
+    <h1>We Build <span class="accent">Scalable</span> Web &amp; App<br/>Products for Your Business</h1>
+    <p>DevDotDev is a Chennai-based software studio crafting custom web apps, mobile apps, and enterprise systems — HRMS, CRM, ERP, e-commerce &amp; more — with modern tech and reliable support.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Start Your Project &rarr;</a>
+      <a href="#portfolio" class="btn btn-ghost">View Our Work</a>
+    </div>
+    <div class="hero-stats">
+      <div class="st"><b>50+</b><span>Projects Delivered</span></div>
+      <div class="st"><b>30+</b><span>Happy Clients</span></div>
+      <div class="st"><b>5+</b><span>Years Experience</span></div>
+      <div class="st"><b>24/7</b><span>Support</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services">
+  <div class="wrap center">
+    <span class="eyebrow">What We Do</span>
+    <h2 class="title">Our <span class="accent">Services</span></h2>
+    <p class="sec-sub">End-to-end software development — from a single landing page to full enterprise systems.</p>
+  </div>
+  <div class="wrap">
+    <div class="grid svc-grid">
+      <div class="svc reveal"><div class="ic">&#128187;</div><h3>Web Development</h3><p>Static, dynamic &amp; corporate websites with admin panels, built fast and SEO-ready.</p></div>
+      <div class="svc reveal"><div class="ic">&#128241;</div><h3>Mobile Apps</h3><p>Android, iOS &amp; Flutter apps with clean UI and smooth native performance.</p></div>
+      <div class="svc reveal"><div class="ic">&#9881;&#65039;</div><h3>Enterprise Systems</h3><p>HRMS, CRM, ERP, School &amp; Hospital management systems tailored to your workflow.</p></div>
+      <div class="svc reveal"><div class="ic">&#128722;</div><h3>E-Commerce</h3><p>Single &amp; multi-vendor stores with payment gateways and inventory built in.</p></div>
+      <div class="svc reveal"><div class="ic">&#127912;</div><h3>UI/UX &amp; Design</h3><p>Logo design, UI/UX, and custom dashboards that look as good as they perform.</p></div>
+      <div class="svc reveal"><div class="ic">&#128640;</div><h3>Hosting &amp; Support</h3><p>Deployment, SEO optimization, API integration and dedicated bug-fixing support.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PORTFOLIO ===== -->
+<section id="portfolio" style="background:var(--bg-2);border-block:1px solid var(--line)">
+  <div class="wrap center">
+    <span class="eyebrow">Our Work</span>
+    <h2 class="title">Featured <span class="accent">Projects</span></h2>
+    <p class="sec-sub">A selection of the kind of products we design and ship for our clients.</p>
+  </div>
+  <div class="wrap">
+    <div class="grid port-grid">
+
+      <div class="proj reveal">
+        <div class="thumb t-hrms"><span>HRMS</span></div>
+        <div class="body">
+          <div class="tag">ENTERPRISE SYSTEM</div>
+          <h3>HRMS Platform</h3>
+          <p>Complete HR management — employee records, payroll, leave &amp; attendance tracking with role-based dashboards.</p>
+          <div class="stack"><span>Laravel</span><span>MySQL</span><span>REST API</span></div>
+        </div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="thumb t-crm"><span>CRM</span></div>
+        <div class="body">
+          <div class="tag">SALES &amp; LEADS</div>
+          <h3>CRM Suite</h3>
+          <p>Lead capture, pipeline tracking, automated follow-ups and reporting to help sales teams close faster.</p>
+          <div class="stack"><span>React</span><span>Node</span><span>Charts</span></div>
+        </div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="thumb t-erp"><span>ERP</span></div>
+        <div class="body">
+          <div class="tag">OPERATIONS</div>
+          <h3>ERP System</h3>
+          <p>Unified accounting, inventory, procurement and HR modules in one integrated business platform.</p>
+          <div class="stack"><span>Laravel</span><span>Vue</span><span>PostgreSQL</span></div>
+        </div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="thumb t-ecom"><span>SHOP</span></div>
+        <div class="body">
+          <div class="tag">E-COMMERCE</div>
+          <h3>E-Commerce Store</h3>
+          <p>Multi-vendor marketplace with cart, secure payment gateway, order tracking and admin analytics.</p>
+          <div class="stack"><span>React</span><span>Razorpay</span><span>Node</span></div>
+        </div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="thumb t-biz"><span>BIZ</span></div>
+        <div class="body">
+          <div class="tag">BUSINESS WEBSITE</div>
+          <h3>Corporate Website</h3>
+          <p>Fast, responsive corporate website with CMS, blog and lead forms — built to convert &amp; rank on Google.</p>
+          <div class="stack"><span>HTML/CSS</span><span>JS</span><span>SEO</span></div>
+        </div>
+      </div>
+
+      <div class="proj reveal">
+        <div class="thumb t-app"><span>APP</span></div>
+        <div class="body">
+          <div class="tag">MOBILE APP</div>
+          <h3>Flutter Mobile App</h3>
+          <p>Cross-platform mobile app with real-time data, push notifications and a polished native UI.</p>
+          <div class="stack"><span>Flutter</span><span>Firebase</span><span>Dart</span></div>
+        </div>
+      </div>
+
+    </div>
+    <p class="price-note">More case studies available on request — <a href="#contact" style="color:var(--orange)">get in touch</a>.</p>
+  </div>
+</section>
+
+<!-- ===== ABOUT / WHY ===== -->
+<section id="about" class="about">
+  <div class="wrap about-flex">
+    <div>
+      <span class="eyebrow">About Us</span>
+      <h2 class="title">Why Choose <span class="accent">DevDotDev</span>?</h2>
+      <p class="sec-sub" style="margin-bottom:0">We help startups, small businesses and enterprises build scalable, secure and user-friendly digital products — with transparent communication and reliable post-launch support.</p>
+      <div class="why-list">
+        <div class="why-item reveal"><span class="ck">&#10003;</span>Experienced Development Team</div>
+        <div class="why-item reveal"><span class="ck">&#10003;</span>Modern Technologies &amp; Frameworks</div>
+        <div class="why-item reveal"><span class="ck">&#10003;</span>Responsive &amp; Scalable Solutions</div>
+        <div class="why-item reveal"><span class="ck">&#10003;</span>Transparent Pricing</div>
+        <div class="why-item reveal"><span class="ck">&#10003;</span>Dedicated Support &amp; Maintenance</div>
+        <div class="why-item reveal"><span class="ck">&#10003;</span>On-Time Project Delivery</div>
+      </div>
+    </div>
+    <div class="about-card reveal">
+      <h3>Built with modern tech.</h3>
+      <p>From rapid MVPs to full enterprise platforms, we pick the right stack for the job and keep your product fast, secure and maintainable.</p>
+      <div class="about-tags">
+        <span>React</span><span>Laravel</span><span>CodeIgniter</span><span>Flutter</span><span>Node</span><span>MySQL</span><span>REST API</span><span>Payment Gateways</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section id="pricing">
+  <div class="wrap center">
+    <span class="eyebrow">Transparent Pricing</span>
+    <h2 class="title">Service <span class="accent">Pricing</span></h2>
+    <p class="sec-sub">Clear starting prices — final quote depends on project scope. Filter by category below.</p>
+  </div>
+  <div class="wrap">
+    <div class="price-cats" id="priceCats">
+      <button class="cat-btn active" data-cat="all">All</button>
+      <button class="cat-btn" data-cat="Web">Web</button>
+      <button class="cat-btn" data-cat="Systems">Systems</button>
+      <button class="cat-btn" data-cat="Mobile">Mobile</button>
+      <button class="cat-btn" data-cat="Development">Development</button>
+      <button class="cat-btn" data-cat="Design">Design</button>
+      <button class="cat-btn" data-cat="Support">Support</button>
+    </div>
+    <div class="grid price-grid" id="priceGrid"></div>
+    <p class="price-note">* Prices may vary based on project scope &amp; requirements. 50% advance to begin.</p>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="contact">
+  <div class="wrap center">
+    <span class="eyebrow">Let's Talk</span>
+    <h2 class="title">Start Your <span class="accent">Project</span></h2>
+    <p class="sec-sub">Tell us what you need — we'll get back with a custom quote and timeline.</p>
+  </div>
+  <div class="wrap contact-flex">
+    <div class="contact-info">
+      <div class="ci"><div class="ic">&#128241;</div><div><b>Call Us</b><span>+91 93844 72763</span></div></div>
+      <div class="ci"><div class="ic">&#9993;&#65039;</div><div><b>Email</b><span>browsetab.siva@gmail.com</span></div></div>
+      <div class="ci"><div class="ic">&#128205;</div><div><b>Address</b><span>16A, Pillayar Kovil St, Cholambedu,<br/>Thirumullaivoyal, Chennai – 600062</span></div></div>
+      <a href="https://wa.me/919384472763" target="_blank" rel="noopener" class="btn btn-primary" style="background:#25D366;margin-top:6px">&#128172; Chat on WhatsApp</a>
+    </div>
+    <form class="form" id="contactForm" onsubmit="return sendEnquiry(event)">
+      <label>Your Name</label>
+      <input type="text" id="f_name" placeholder="John Doe" required />
+      <label>Email / Phone</label>
+      <input type="text" id="f_contact" placeholder="you@email.com or +91..." required />
+      <label>Service Needed</label>
+      <input type="text" id="f_service" placeholder="e.g. E-Commerce Website" />
+      <label>Message</label>
+      <textarea id="f_msg" placeholder="Tell us about your project..." required></textarea>
+      <button type="submit" class="btn btn-primary">Send Enquiry via WhatsApp &rarr;</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#home" class="brand">
+          <img src="logo.png" alt="DevDotDev" />
+          <div class="bt">DevDotDev<small>CHENNAI WEB &amp; APP DEVELOPER</small></div>
+        </a>
+        <p>Chennai-based software studio building custom web &amp; app products for startups, businesses and enterprises.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5>Company</h5>
+          <a href="#services">Services</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#about">About</a>
+          <a href="#pricing">Pricing</a>
+        </div>
+        <div class="foot-col">
+          <h5>Contact</h5>
+          <a href="tel:+919384472763">+91 93844 72763</a>
+          <a href="mailto:browsetab.siva@gmail.com">browsetab.siva@gmail.com</a>
+          <a href="https://wa.me/919384472763" target="_blank" rel="noopener">WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="yr"></span> DevDotDev. All rights reserved.</span>
+      <span class="mono">&lt;built with /&gt; in Chennai</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/919384472763" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">&#128172;</a>
+
+<script>
+/* ---- pricing data (from quotation) ---- */
+const PRICES=[
+  {c:'Web',n:'Static Business Website (5 Pages)',p:'Rs. 4,999 – 8,999'},
+  {c:'Web',n:'Dynamic Website with Admin Panel',p:'Rs. 30,000'},
+  {c:'Web',n:'Corporate Website',p:'Rs. 40,000'},
+  {c:'Web',n:'Custom Web Application',p:'Rs. 75,000'},
+  {c:'Web',n:'E-Commerce Website',p:'Rs. 50,000'},
+  {c:'Web',n:'Multi Vendor E-Commerce',p:'Rs. 1,50,000'},
+  {c:'Systems',n:'School Management System',p:'Rs. 80,000'},
+  {c:'Systems',n:'Hospital Management System',p:'Rs. 1,20,000'},
+  {c:'Systems',n:'CRM Development',p:'Rs. 1,00,000'},
+  {c:'Systems',n:'ERP Development',p:'Rs. 2,50,000'},
+  {c:'Systems',n:'Inventory Management System',p:'Rs. 70,000'},
+  {c:'Systems',n:'Attendance Management System',p:'Rs. 50,000'},
+  {c:'Systems',n:'HRMS Development',p:'Rs. 1,00,000'},
+  {c:'Development',n:'Laravel Development',p:'Rs. 50,000'},
+  {c:'Development',n:'CodeIgniter Development',p:'Rs. 40,000'},
+  {c:'Development',n:'React Development',p:'Rs. 60,000'},
+  {c:'Development',n:'API Development & Integration',p:'Rs. 15,000'},
+  {c:'Development',n:'Payment Gateway Integration',p:'Rs. 10,000'},
+  {c:'Mobile',n:'Android Mobile App',p:'Rs. 60,000'},
+  {c:'Mobile',n:'iOS Mobile App',p:'Rs. 80,000'},
+  {c:'Mobile',n:'Flutter Mobile App',p:'Rs. 90,000'},
+  {c:'Design',n:'UI/UX Design',p:'Rs. 15,000'},
+  {c:'Design',n:'Logo Design',p:'Rs. 5,000'},
+  {c:'Design',n:'Custom Dashboard & Reports',p:'Rs. 25,000'},
+  {c:'Support',n:'Hosting & Deployment',p:'Rs. 5,000'},
+  {c:'Support',n:'SEO Optimization',p:'Rs. 10,000'},
+  {c:'Support',n:'Bug Fixing & Support',p:'Rs. 350',u:'/ hour'},
+];
+const grid=document.getElementById('priceGrid');
+function renderPrices(cat){
+  grid.innerHTML='';
+  PRICES.filter(x=>cat==='all'||x.c===cat).forEach(x=>{
+    const d=document.createElement('div');d.className='price';
+    d.innerHTML=`<div class="pc">${x.c}</div><h4>${x.n}</h4><div class="amt">${x.p} ${x.u?`<small>${x.u}</small>`:''}</div>`;
+    grid.appendChild(d);
+  });
+}
+renderPrices('all');
+document.getElementById('priceCats').addEventListener('click',e=>{
+  if(!e.target.classList.contains('cat-btn'))return;
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  renderPrices(e.target.dataset.cat);
+});
+
+/* ---- contact -> whatsapp ---- */
+function sendEnquiry(e){
+  e.preventDefault();
+  const n=document.getElementById('f_name').value.trim();
+  const c=document.getElementById('f_contact').value.trim();
+  const s=document.getElementById('f_service').value.trim();
+  const m=document.getElementById('f_msg').value.trim();
+  const txt=`*New Enquiry — DevDotDev*%0A%0A*Name:* ${n}%0A*Contact:* ${c}%0A*Service:* ${s||'-'}%0A*Message:* ${m}`;
+  window.open(`https://wa.me/919384472763?text=${txt}`,'_blank');
+  return false;
+}
+
+/* ---- nav scroll + mobile menu ---- */
+const hdr=document.getElementById('hdr');
+window.addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>20));
+const burger=document.getElementById('burger'),nav=document.getElementById('navLinks');
+burger.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+/* ---- reveal on scroll ---- */
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
