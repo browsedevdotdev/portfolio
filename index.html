@@ -209,6 +209,13 @@ header.scrolled{border-bottom:1px solid var(--line);background:rgba(10,10,12,.92
 .price h4{font-size:1.05rem;font-weight:600}
 .price .amt{font-size:1.4rem;font-weight:800;color:var(--orange);margin-top:auto;padding-top:10px}
 .price .amt small{font-size:.7rem;color:var(--muted);font-weight:400}
+.price .amt.masked{letter-spacing:2px}
+.btn-quote{
+  margin-top:14px;width:100%;padding:10px 16px;border-radius:40px;cursor:pointer;
+  background:var(--orange-soft);color:var(--orange-2);border:1px solid rgba(244,123,32,.35);
+  font-family:'Poppins';font-weight:600;font-size:.86rem;transition:.22s;
+}
+.btn-quote:hover{background:var(--orange);color:#fff;border-color:var(--orange)}
 .price-note{text-align:center;color:var(--muted-2);font-size:.85rem;margin-top:26px}
 
 /* ===== contact ===== */
@@ -218,6 +225,9 @@ header.scrolled{border-bottom:1px solid var(--line);background:rgba(10,10,12,.92
 .contact-info .ci .ic{width:46px;height:46px;border-radius:12px;background:var(--orange-soft);color:var(--orange);display:grid;place-items:center;font-size:1.2rem;flex:none}
 .contact-info .ci b{display:block;font-size:.96rem}
 .contact-info .ci span{color:var(--muted);font-size:.88rem}
+.contact-info a.ci-link{transition:.2s;border-radius:12px}
+.contact-info a.ci-link:hover .ic{background:var(--orange);color:#fff}
+.contact-info a.ci-link:hover b{color:var(--orange)}
 .form{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:30px}
 .form label{display:block;font-size:.82rem;color:var(--muted);margin-bottom:6px;margin-top:14px}
 .form label:first-child{margin-top:0}
@@ -439,7 +449,7 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:50px 0 30px
   <div class="wrap center">
     <span class="eyebrow">Transparent Pricing</span>
     <h2 class="title">Service <span class="accent">Pricing</span></h2>
-    <p class="sec-sub">Clear starting prices — final quote depends on project scope. Filter by category below.</p>
+    <p class="sec-sub">Every project is unique — pricing is tailored to your exact scope. Browse our services below and request a custom quote.</p>
   </div>
   <div class="wrap">
     <div class="price-cats" id="priceCats">
@@ -452,7 +462,7 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:50px 0 30px
       <button class="cat-btn" data-cat="Support">Support</button>
     </div>
     <div class="grid price-grid" id="priceGrid"></div>
-    <p class="price-note">* Prices may vary based on project scope &amp; requirements. 50% advance to begin.</p>
+    <p class="price-note">Pricing is shared on request and depends on your project's scope &amp; requirements. <a href="#contact" style="color:var(--orange)">Request a quote &rarr;</a> or DM us on <a href="https://www.instagram.com/devdotdev/" target="_blank" rel="noopener" style="color:var(--orange)">Instagram @devdotdev</a></p>
   </div>
 </section>
 
@@ -468,6 +478,7 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:50px 0 30px
       <div class="ci"><div class="ic">&#128241;</div><div><b>Call Us</b><span>+91 93844 72763</span></div></div>
       <div class="ci"><div class="ic">&#9993;&#65039;</div><div><b>Email</b><span>browsetab.siva@gmail.com</span></div></div>
       <div class="ci"><div class="ic">&#128205;</div><div><b>Address</b><span>16A, Pillayar Kovil St, Cholambedu,<br/>Thirumullaivoyal, Chennai – 600062</span></div></div>
+      <a href="https://www.instagram.com/devdotdev/" target="_blank" rel="noopener" class="ci ci-link"><div class="ic">&#128247;</div><div><b>Instagram</b><span>@devdotdev — DM us for a quote</span></div></a>
       <a href="https://wa.me/919384472763" target="_blank" rel="noopener" class="btn btn-primary" style="background:#25D366;margin-top:6px">&#128172; Chat on WhatsApp</a>
     </div>
     <form class="form" id="contactForm" onsubmit="return sendEnquiry(event)">
@@ -508,6 +519,7 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:50px 0 30px
           <a href="tel:+919384472763">+91 93844 72763</a>
           <a href="mailto:browsetab.siva@gmail.com">browsetab.siva@gmail.com</a>
           <a href="https://wa.me/919384472763" target="_blank" rel="noopener">WhatsApp Us</a>
+          <a href="https://www.instagram.com/devdotdev/" target="_blank" rel="noopener">Instagram @devdotdev</a>
         </div>
       </div>
     </div>
@@ -523,40 +535,42 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:50px 0 30px
 <script>
 /* ---- pricing data (from quotation) ---- */
 const PRICES=[
-  {c:'Web',n:'Static Business Website (5 Pages)',p:'Rs. 4,999 – 8,999'},
-  {c:'Web',n:'Dynamic Website with Admin Panel',p:'Rs. 30,000'},
-  {c:'Web',n:'Corporate Website',p:'Rs. 40,000'},
-  {c:'Web',n:'Custom Web Application',p:'Rs. 75,000'},
-  {c:'Web',n:'E-Commerce Website',p:'Rs. 50,000'},
-  {c:'Web',n:'Multi Vendor E-Commerce',p:'Rs. 1,50,000'},
-  {c:'Systems',n:'School Management System',p:'Rs. 80,000'},
-  {c:'Systems',n:'Hospital Management System',p:'Rs. 1,20,000'},
-  {c:'Systems',n:'CRM Development',p:'Rs. 1,00,000'},
-  {c:'Systems',n:'ERP Development',p:'Rs. 2,50,000'},
-  {c:'Systems',n:'Inventory Management System',p:'Rs. 70,000'},
-  {c:'Systems',n:'Attendance Management System',p:'Rs. 50,000'},
-  {c:'Systems',n:'HRMS Development',p:'Rs. 1,00,000'},
-  {c:'Development',n:'Laravel Development',p:'Rs. 50,000'},
-  {c:'Development',n:'CodeIgniter Development',p:'Rs. 40,000'},
-  {c:'Development',n:'React Development',p:'Rs. 60,000'},
-  {c:'Development',n:'API Development & Integration',p:'Rs. 15,000'},
-  {c:'Development',n:'Payment Gateway Integration',p:'Rs. 10,000'},
-  {c:'Mobile',n:'Android Mobile App',p:'Rs. 60,000'},
-  {c:'Mobile',n:'iOS Mobile App',p:'Rs. 80,000'},
-  {c:'Mobile',n:'Flutter Mobile App',p:'Rs. 90,000'},
-  {c:'Design',n:'UI/UX Design',p:'Rs. 15,000'},
-  {c:'Design',n:'Logo Design',p:'Rs. 5,000'},
-  {c:'Design',n:'Custom Dashboard & Reports',p:'Rs. 25,000'},
-  {c:'Support',n:'Hosting & Deployment',p:'Rs. 5,000'},
-  {c:'Support',n:'SEO Optimization',p:'Rs. 10,000'},
-  {c:'Support',n:'Bug Fixing & Support',p:'Rs. 350',u:'/ hour'},
+  {c:'Web',n:'Static Business Website (5 Pages)'},
+  {c:'Web',n:'Dynamic Website with Admin Panel'},
+  {c:'Web',n:'Corporate Website'},
+  {c:'Web',n:'Custom Web Application'},
+  {c:'Web',n:'E-Commerce Website'},
+  {c:'Web',n:'Multi Vendor E-Commerce'},
+  {c:'Systems',n:'School Management System'},
+  {c:'Systems',n:'Hospital Management System'},
+  {c:'Systems',n:'CRM Development'},
+  {c:'Systems',n:'ERP Development'},
+  {c:'Systems',n:'Inventory Management System'},
+  {c:'Systems',n:'Attendance Management System'},
+  {c:'Systems',n:'HRMS Development'},
+  {c:'Development',n:'Laravel Development'},
+  {c:'Development',n:'CodeIgniter Development'},
+  {c:'Development',n:'React Development'},
+  {c:'Development',n:'API Development & Integration'},
+  {c:'Development',n:'Payment Gateway Integration'},
+  {c:'Mobile',n:'Android Mobile App'},
+  {c:'Mobile',n:'iOS Mobile App'},
+  {c:'Mobile',n:'Flutter Mobile App'},
+  {c:'Design',n:'UI/UX Design'},
+  {c:'Design',n:'Logo Design'},
+  {c:'Design',n:'Custom Dashboard & Reports'},
+  {c:'Support',n:'Hosting & Deployment'},
+  {c:'Support',n:'SEO Optimization'},
+  {c:'Support',n:'Bug Fixing & Support'},
 ];
 const grid=document.getElementById('priceGrid');
 function renderPrices(cat){
   grid.innerHTML='';
   PRICES.filter(x=>cat==='all'||x.c===cat).forEach(x=>{
     const d=document.createElement('div');d.className='price';
-    d.innerHTML=`<div class="pc">${x.c}</div><h4>${x.n}</h4><div class="amt">${x.p} ${x.u?`<small>${x.u}</small>`:''}</div>`;
+    d.innerHTML=`<div class="pc">${x.c}</div><h4>${x.n}</h4>`+
+      `<div class="amt masked">&#8377; XXXX <small>on request</small></div>`+
+      `<button class="btn-quote" data-svc="${x.n}">Get Quote &rarr;</button>`;
     grid.appendChild(d);
   });
 }
@@ -568,6 +582,16 @@ document.getElementById('priceCats').addEventListener('click',e=>{
   renderPrices(e.target.dataset.cat);
 });
 
+/* ---- get-quote -> prefill contact form ---- */
+grid.addEventListener('click',e=>{
+  const b=e.target.closest('.btn-quote');
+  if(!b)return;
+  const svc=document.getElementById('f_service');
+  if(svc)svc.value=b.dataset.svc||'';
+  document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>{const n=document.getElementById('f_name');if(n)n.focus();},600);
+});
+
 /* ---- contact -> whatsapp ---- */
 function sendEnquiry(e){
   e.preventDefault();
@@ -575,8 +599,8 @@ function sendEnquiry(e){
   const c=document.getElementById('f_contact').value.trim();
   const s=document.getElementById('f_service').value.trim();
   const m=document.getElementById('f_msg').value.trim();
-  const txt=`*New Enquiry — DevDotDev*%0A%0A*Name:* ${n}%0A*Contact:* ${c}%0A*Service:* ${s||'-'}%0A*Message:* ${m}`;
-  window.open(`https://wa.me/919384472763?text=${txt}`,'_blank');
+  const txt=`*New Enquiry — DevDotDev*\n\n*Name:* ${n}\n*Contact:* ${c}\n*Service:* ${s||'-'}\n*Message:* ${m}`;
+  window.open(`https://wa.me/919384472763?text=${encodeURIComponent(txt)}`,'_blank','noopener');
   return false;
 }
 
